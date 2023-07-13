@@ -1,4 +1,4 @@
-name: Build
+name: Test Sonarcloud
 on:
   push:
     branches: [ "master" ]
