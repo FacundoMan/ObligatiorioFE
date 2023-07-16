@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: primuslearning
+  name: ObligatiorioFE
   labels:
-    app: primuslearning
+    app: ObligatiorioFE
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: primuslearning
+      app: ObligatiorioFE
   template:
     metadata:
       labels:
-        app: primuslearning
+        app: ObligatiorioFE
     spec:
       containers:
-        - name: primuslearning
+        - name: ecr_demo_obli
           image: 206798921196.dkr.ecr.us-east-1.amazonaws.com/ecr_demo_obli:1.1
           imagePullPolicy: Always
           ports:
