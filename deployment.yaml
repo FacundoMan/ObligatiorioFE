@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecr_demo_obli
+  name: obligatoriofe
   labels:
-    app: ecr_demo_obli
+    app: obligatoriofe
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ecr_demo_obli
+      app: obligatoriofe
   template:
     metadata:
       labels:
-        app: ecr_demo_obli
+        app: obligatoriofe
     spec:
       containers:
         - name: ecr_demo_obli
