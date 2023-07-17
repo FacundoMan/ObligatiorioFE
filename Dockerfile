@@ -1,12 +1,16 @@
-FROM node:14-alpine
 
-# Create app directory
-WORKDIR /usr/src/app
+FROM node:16-alpine 
+
+WORKDIR /app
 
 COPY . .
 
-RUN npm install
+RUN npm ci 
 
-EXPOSE 8080
+RUN npm run build
 
-CMD [ "node", "server.js" ]
+ENV NODE_ENV production
+
+EXPOSE 3000
+
+CMD [ "npx", "serve", "build" ]
