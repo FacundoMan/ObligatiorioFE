@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: obligatorio-fe-devops
   labels:
-    app: ecr_demo_obli
+    app: ecr-demo-obli
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ecr_demo_obli
+      app: ecr-demo-obli
   template:
     metadata:
       labels:
-        app: ecr_demo_obli
+        app: ecr-demo-obli
     spec:
       containers:
-        - name: ecr_demo_obli
+        - name: ecr-demo-obli
           image: 206798921196.dkr.ecr.us-east-1.amazonaws.com/ecr_demo_obli:1.1
           imagePullPolicy: Always
           ports:
