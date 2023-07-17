@@ -1,16 +1,24 @@
 
-FROM node:16-alpine 
+FROM node:alpine as build
 
 WORKDIR /app
 
-COPY . .
+COPY . /app
 
-RUN npm ci 
+ENV PATH /app/node_modules/.bin:$PATH
 
-RUN npm run build
+RUN yarn
 
-ENV NODE_ENV production
+RUN yarn build
 
-EXPOSE 3000
+FROM nginx:alpine
 
-CMD [ "npx", "serve", "build" ]
+COPY --from=build /app/build /usr/share/nginx/html
+
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY nginx/nginx.conf /etc/nginx/conf.d
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
