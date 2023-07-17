@@ -1,12 +1,12 @@
-FROM node:16.15.0 as build
-WORKDIR /var/app
+FROM node:14-alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+
 COPY . .
 
-RUN npm install && npm run build
+RUN npm install
 
-FROM nginx:1.23.3
-EXPOSE 9000
+EXPOSE 8080
 
-COPY --from=build /var/app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
-WORKDIR /usr/share/nginx/html
+CMD [ "node", "server.js" ]
