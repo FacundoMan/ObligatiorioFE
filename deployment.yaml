@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: obligatorio-fe-devops
   labels:
-    app: obligatoriofe
+    app: ecr_demo_obli
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: obligatoriofe
+      app: ecr_demo_obli
   template:
     metadata:
       labels:
-        app: obligatoriofe
+        app: ecr_demo_obli
     spec:
       containers:
         - name: ecr_demo_obli
