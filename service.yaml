@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Ingress
 metadata:
-  name: ecr-demo-obli
+  name: obligatorio-fe-devops
 spec:
   selector:
-    app: ecr-demo-obli
+    app: obligatorio-fe-devops
   ports:
     - protocol: TCP
       port: 80
