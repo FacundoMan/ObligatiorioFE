@@ -1,12 +1,20 @@
 
-FROM nginx:alpine
+FROM node:13.12.0-alpine
 
-COPY --from=build /app/build /usr/share/nginx/html
 
-RUN rm /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-COPY nginx/nginx.conf /etc/nginx/conf.d
 
-EXPOSE 80
+ENV PATH /app/node_modules/.bin:$PATH
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+
+
+COPY . ./
+
+
+CMD ["npm", "start"]
+
