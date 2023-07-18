@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: ecr-demo-obli
+spec:
+  selector:
+    app: ecr-demo-obli
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
