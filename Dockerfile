@@ -1,15 +1,18 @@
-FROM node:16.15.0 as build
-WORKDIR /var/app
-COPY . .
+
+FROM node:13.12.0-alpine
 
 
-RUN npm install
-RUN npm run build
+WORKDIR /app
 
-FROM nginx:1.23.3
-EXPOSE 9000
 
-COPY --from=build /var/app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
-WORKDIR /usr/share/nginx/html
-CMD ["nginx", "-g", "daemon off;","npm", "start"]
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+
+
+COPY . ./
+
+
+CMD ["npm", "start"]
