@@ -7,16 +7,16 @@ metadata:
 spec:
   tls:
     - hosts:
-        - $(SERVICE_NAME).us-east-1.elb.amazonaws.com
+        - ecr-demo-obli.us-east-1.elb.amazonaws.com
       secretName: secret
   rules:
-    - host: $(SERVICE_NAME).us-east-1.elb.amazonaws.com
+    - host: ecr-demo-obli.us-east-1.elb.amazonaws.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: ecr-demo-obli  # Nombre del Service que deseas exponer
+                name: ecr-demo-obli
                 port:
                   number: 80
