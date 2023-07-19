@@ -6,17 +6,17 @@ metadata:
     kubernetes.io/ingress.class: "public-iks-k8s-nginx"
 spec:
   tls:
-    hosts:
-      - host
-    secretName: secret
+    - hosts:
+        - $(SERVICE_NAME).us-east-1.elb.amazonaws.com
+      secretName: secret
   rules:
-  - host: host
+    - host: $(SERVICE_NAME).us-east-1.elb.amazonaws.com
       http:
         paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: obligatoriofe
-              port:
-                number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ecr-demo-obli  # Nombre del Service que deseas exponer
+                port:
+                  number: 80
