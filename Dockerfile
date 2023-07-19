@@ -1,17 +1,10 @@
-FROM node:18.12.1-buster-slim AS builder
-
-WORKDIR /app
-COPY package.json ./
-COPY public/ public/
-COPY src/ src/
-RUN npm ci
-RUN npm run build
-
 FROM node:16.15.0 as build
 WORKDIR /var/app
 COPY . .
 
-RUN npm install && npm run build
+RUN npm ci
+RUN npm install
+RUN npm run build
 
 FROM nginx:1.23.3
 EXPOSE 9000
