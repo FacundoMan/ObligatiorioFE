@@ -11,7 +11,7 @@ EXPOSE 9000
 COPY --from=build /var/app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 WORKDIR /usr/share/nginx/html
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 
 
