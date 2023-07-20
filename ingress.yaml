@@ -4,6 +4,11 @@ metadata:
   name: obligatoriofe
   annotations:
     kubernetes.io/ingress.class: "public-iks-k8s-nginx"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Origin, X-Requested-With, Content-Type, Accept"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 spec:
   tls:
     - hosts:
